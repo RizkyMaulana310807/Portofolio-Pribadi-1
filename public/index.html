@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Sidebar with Dark Mode</title>
+    <link rel="stylesheet" href="../dist/output.css">
+    <style>
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .animate-blink {
+            animation: blink 1s step-end infinite;
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-200">
+    <div class="bg-white dark:bg-gray-900 bg-opacity-10">
+        <header class="sticky top-0 inset-x-0 z-50">
+            <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+                <div class="flex lg:flex-1">
+                    <a href="#" class="-m-1.5 p-1.5">
+                        <span class="sr-only">Your Company</span>
+                        <h1>Rizky Maulana</h1>
+                        <!-- <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt=""> -->
+                    </a>
+                </div>
+                <div class="flex gap-x-4 items-center">
+                    <a href="#" class="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400">Home</a>
+                    <a href="#" class="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400">About</a>
+                    <a href="#" class="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400">Project</a>
+                    <a href="#" class="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400">Contact</a>
+                    <button title="Dark / Light Mode" onclick="toggleDarkMode()" type="button" class="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200 bg-gray-200 dark:bg-gray-800 p-2 rounded-md">
+                        Dark Mode
+                    </button>
+                    <a href="#" class="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200">Log in <span aria-hidden="true">&rarr;</span></a>
+                </div>
+                <div class="flex lg:hidden">
+                    <button onclick="toggleMenu()" type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 dark:text-gray-300">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+
+            <div id="mobile-menu" class="lg:hidden hidden fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white dark:bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+                <div class="flex items-center justify-between">
+                    <a href="#" class="-m-1.5 p-1.5">
+                        <span class="sr-only">Your Company</span>
+                        <h1>Rizky Maulana</h1>
+                        <!-- <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt=""> -->
+                    </a>
+                    <button onclick="toggleMenu()" type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700 dark:text-gray-300">
+                        <span class="sr-only">Close menu</span>
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="mt-6 flow-root">
+                    <div class="-my-6 divide-y divide-gray-500/10">
+                        <div class="space-y-2 py-6">
+                            <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700">Product</a>
+                            <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700">Features</a>
+                            <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700">Marketplace</a>
+                            <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700">Company</a>
+                        </div>
+                        <div class="py-6">
+                            <a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700">Log in</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+      
+        <!-- Main content -->
+        <main class="flex items-center justify-center min-h-screen bg-white dark:bg-gray-900">
+            <div class="text-center">
+                <h1 class="text-4xl font-bold tracking-tight sm:text-6xl text-gray-900 dark:text-gray-100">
+                    Hello My Name Is Rizky, <br>I'am A <span id="typing-text" class="bg-slate-300 text-indigo-600 dark:text-indigo-400 dark:bg-gray-800 px-4 bg-opacity-75 rounded-lg"></span>
+                <div id="caret" class="inline-block w-1 h-10 bg-gray-900 dark:bg-gray-100 animate-blink"></div>
+                </h1>
+                <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400">
+                    Explore our products and services. We offer a wide range of solutions to meet your needs.
+                </p>
+            </div>
+        </main>
+
+        <!-- card section project -->
+<section class="min-h-screen bg-white dark:bg-gray-900 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100 text-center mb-10">Our Services</h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Card 1 -->
+            <div class="group bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md transition-transform transform hover:scale-95 duration-300 ease-out">
+                <div class="relative w-full h-48 overflow-hidden rounded-t-lg">
+                    <img src="../src/images/project/img1.jpeg" alt="Web Development" class="object-cover w-full h-full transition-transform duration-300 ease-out group-hover:scale-110">
+                </div>
+                <div class="mt-4">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Web Development</h3>
+                    <p class="mt-2 text-gray-600 dark:text-gray-400">We create high-performance websites with great UX/UI.</p>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="group bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md transition-transform transform hover:scale-95 duration-300 ease-out">
+                <div class="relative w-full h-48 overflow-hidden rounded-t-lg">
+                    <img src="../src/images/project/img1.jpeg" alt="Game Development" class="object-cover w-full h-full transition-transform duration-300 ease-out group-hover:scale-110">
+                </div>
+                <div class="mt-4">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Game Development</h3>
+                    <p class="mt-2 text-gray-600 dark:text-gray-400">Developing interactive and immersive game experiences.</p>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="group bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md transition-transform transform hover:scale-95 duration-300 ease-out">
+                <div class="relative w-full h-48 overflow-hidden rounded-t-lg">
+                    <img src="../src/images/project/img1.jpeg" alt="Machine Learning" class="object-cover w-full h-full transition-transform duration-300 ease-out group-hover:scale-110">
+                </div>
+                <div class="mt-4">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Machine Learning</h3>
+                    <p class="mt-2 text-gray-600 dark:text-gray-400">Empowering AI-driven solutions for various industries.</p>
+                </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="group bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md transition-transform transform hover:scale-95 duration-300 ease-out">
+                <div class="relative w-full h-48 overflow-hidden rounded-t-lg">
+                    <img src="../src/images/project/img1.jpeg" alt="Backend Development" class="object-cover w-full h-full transition-transform duration-300 ease-out group-hover:scale-110">
+                </div>
+                <div class="mt-4">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Backend Development</h3>
+                    <p class="mt-2 text-gray-600 dark:text-gray-400">Building scalable and efficient backend systems.</p>
+                </div>
+            </div>
+            <!-- Card 5 -->
+            <div class="group bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md transition-transform transform hover:scale-95 duration-300 ease-out">
+                <div class="relative w-full h-48 overflow-hidden rounded-t-lg">
+                    <img src="../src/images/project/img1.jpeg" alt="Frontend Development" class="object-cover w-full h-full transition-transform duration-300 ease-out group-hover:scale-110">
+                </div>
+                <div class="mt-4">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Frontend Development</h3>
+                    <p class="mt-2 text-gray-600 dark:text-gray-400">Creating responsive and user-friendly web interfaces.</p>
+                </div>
+            </div>
+            <!-- Card 6 -->
+            <div class="group bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md transition-transform transform hover:scale-95 duration-300 ease-out">
+                <div class="relative w-full h-48 overflow-hidden rounded-t-lg">
+                    <img src="../src/images/project/img1.jpeg" alt="UI/UX Design" class="object-cover w-full h-full transition-transform duration-300 ease-out group-hover:scale-110">
+                </div>
+                <div class="mt-4">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">UI/UX Design</h3>
+                    <p class="mt-2 text-gray-600 dark:text-gray-400">Designing intuitive and beautiful digital products.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+        
+        <!-- card section skills -->
+        <section class="min-h-screen bg-white dark:bg-gray-900 py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100 text-center mb-10">Skills</h2>
+        
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Card 1 -->
+                    <div class="group bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md transition-transform transform hover:scale-105 hover:brightness-125 duration-300 ease-out">
+                        <div class="flex items-center">
+                            <img src="../src/images/logo/HTMLLOGO-removebg-preview.png" alt="html logo" class="w-10 h-10 mr-4">
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Web Development</h3>
+                                <p class="mt-2 text-gray-600 dark:text-gray-400">We create high-performance websites with great UX/UI.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="group bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md transition-transform transform hover:scale-105 hover:brightness-125 duration-300 ease-out">
+                        <div class="flex items-center">
+                            <img src="../src/images/logo/CSSLOGO-removebg-preview.png" alt="game logo" class="w-10 h-10 mr-4">
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Game Development</h3>
+                                <p class="mt-2 text-gray-600 dark:text-gray-400">Developing interactive and immersive game experiences.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="group bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md transition-transform transform hover:scale-105 hover:brightness-125 duration-300 ease-out">
+                        <div class="flex items-center">
+                            <img src="../src/images/logo/JavascriptLogo.jpeg" alt="ml logo" class="w-10 h-10 mr-4">
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Machine Learning</h3>
+                                <p class="mt-2 text-gray-600 dark:text-gray-400">Empowering AI-driven solutions for various industries.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="group bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md transition-transform transform hover:scale-105 hover:brightness-125 duration-300 ease-out">
+                        <div class="flex items-center">
+                            <img src="../src/images/logo/JavaLogo-removebg-preview.png" alt="backend logo" class="w-16 h-16 mr-4">
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Backend Development</h3>
+                                <p class="mt-2 text-gray-600 dark:text-gray-400">Building scalable and efficient backend systems.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 5 -->
+                    <div class="group bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md transition-transform transform hover:scale-105 hover:brightness-125 duration-300 ease-out">
+                        <div class="flex items-center">
+                            <img src="../src/images/logo/phpLogo-removebg-preview .png" alt="frontend logo" class="w-14 h-10 mr-4">
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Frontend Development</h3>
+                                <p class="mt-2 text-gray-600 dark:text-gray-400">Creating responsive and user-friendly web interfaces.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 6 -->
+                    <div class="group bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md transition-transform transform hover:scale-105 hover:brightness-125 duration-300 ease-out">
+                        <div class="flex items-center">
+                            <img src="../src/images/logo/Python-removebg-preview.png" alt="uiux logo" class="w-10 h-10 mr-4">
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">UI/UX Design</h3>
+                                <p class="mt-2 text-gray-600 dark:text-gray-400">Designing intuitive and beautiful digital products.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="group bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md transition-transform transform hover:scale-105 hover:brightness-125 duration-300 ease-out">
+                        <div class="flex items-center">
+                            <img src="../src/images/logo/Python-removebg-preview.png" alt="uiux logo" class="w-10 h-10 mr-4">
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">UI/UX Design</h3>
+                                <p class="mt-2 text-gray-600 dark:text-gray-400">Designing intuitive and beautiful digital products.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="group bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md transition-transform transform hover:scale-105 hover:brightness-125 duration-300 ease-out">
+                        <div class="flex items-center">
+                            <img src="../src/images/logo/Python-removebg-preview.png" alt="uiux logo" class="w-10 h-10 mr-4">
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">UI/UX Design</h3>
+                                <p class="mt-2 text-gray-600 dark:text-gray-400">Designing intuitive and beautiful digital products.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="group bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md transition-transform transform hover:scale-105 hover:brightness-125 duration-300 ease-out">
+                        <div class="flex items-center">
+                            <img src="../src/images/logo/Python-removebg-preview.png" alt="uiux logo" class="w-10 h-10 mr-4">
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">UI/UX Design</h3>
+                                <p class="mt-2 text-gray-600 dark:text-gray-400">Designing intuitive and beautiful digital products.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="group bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md transition-transform transform hover:scale-105 hover:brightness-125 duration-300 ease-out">
+                        <div class="flex items-center">
+                            <img src="../src/images/logo/Python-removebg-preview.png" alt="uiux logo" class="w-10 h-10 mr-4">
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">UI/UX Design</h3>
+                                <p class="mt-2 text-gray-600 dark:text-gray-400">Designing intuitive and beautiful digital products.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="group bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md transition-transform transform hover:scale-105 hover:brightness-125 duration-300 ease-out">
+                        <div class="flex items-center">
+                            <img src="../src/images/logo/Python-removebg-preview.png" alt="uiux logo" class="w-10 h-10 mr-4">
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">UI/UX Design</h3>
+                                <p class="mt-2 text-gray-600 dark:text-gray-400">Designing intuitive and beautiful digital products.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="group bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md transition-transform transform hover:scale-105 hover:brightness-125 duration-300 ease-out">
+                        <div class="flex items-center">
+                            <img src="../src/images/logo/Python-removebg-preview.png" alt="uiux logo" class="w-10 h-10 mr-4">
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">UI/UX Design</h3>
+                                <p class="mt-2 text-gray-600 dark:text-gray-400">Designing intuitive and beautiful digital products.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+            </div>
+        </section>
+        
+
+    <script>
+        // console.log("Berjalan")
+        // JavaScript untuk mengatur visibilitas sidebar
+        function toggleMenu() {
+            const sidebar = document.getElementById("mobile-menu");
+            sidebar.classList.toggle("hidden");
+        }
+
+        // Fungsi untuk mengganti tema Dark/Light mode
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            html.classList.toggle("dark"); // Tambah/hapus kelas dark pada elemen HTML
+        }
+
+        // JavaScript untuk animasi teks
+        const texts = ["Web Dev", "Game Dev", "Machine Learning", "Backend Dev", "Frontend Dev", "UI/UX"];
+        let index = 0;
+        let textElement = document.getElementById("typing-text");
+        let caretElement = document.getElementById("caret");
+
+        function typeText() {
+            let text = texts[index];
+            let i = 0;
+            textElement.textContent = "";
+
+            function type() {
+                if (i < text.length) {
+                    textElement.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, 125); // Kecepatan mengetik
+                } else {
+                    setTimeout(deleteText, 2000); // Waktu tunggu sebelum menghapus
+                }
+            }
+            type();
+        }
+
+        function deleteText() {
+            let text = texts[index];
+            let i = text.length;
+            function del() {
+                if (i > 0) {
+                    textElement.textContent = text.substring(0, i - 1);
+                    i--;
+                    setTimeout(del, 50); // Kecepatan menghapus
+                } else {
+                    index = (index + 1) % texts.length;
+                    setTimeout(typeText, 500); // Waktu tunggu sebelum mengetik teks berikutnya
+                }
+            }
+            del();
+        }
+
+        typeText();
+        document.addEventListener("DOMContentLoaded", function() {
+        });
+    </script>
+</body>
+</html>
