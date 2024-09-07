@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive Sidebar with Dark Mode</title>
-    <link rel="stylesheet" href="dist/output.css">
+    <link rel="stylesheet" href="./dist/output.css">
     <style>
         @keyframes blink {
             0% { opacity: 1; }
@@ -28,7 +28,7 @@
                         <!-- <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt=""> -->
                     </a>
                 </div>
-                <div class="flex gap-x-4 items-center">
+                <div class="hidden sm:flex gap-x-4 items-center">
                     <a href="#" class="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400">Home</a>
                     <a href="#" class="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400">About</a>
                     <a href="#" class="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400">Project</a>
@@ -38,6 +38,7 @@
                     </button>
                     <a href="#" class="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200">Log in <span aria-hidden="true">&rarr;</span></a>
                 </div>
+                
                 <div class="flex lg:hidden">
                     <button onclick="toggleMenu()" type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 dark:text-gray-300">
                         <span class="sr-only">Open main menu</span>

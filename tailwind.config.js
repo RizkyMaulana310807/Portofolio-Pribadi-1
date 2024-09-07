@@ -1,6 +1,9 @@
 module.exports = {
   darkMode: 'class',
-  content: ["./public/**/*.html", "./public/**/*.js"],
+  content: [
+    "./*.html",  // Mencakup semua file .html di direktori root
+    "./*.js"     // Mencakup semua file .js di direktori root
+  ],
   theme: {
     extend: {},
   },
