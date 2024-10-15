@@ -1,11 +1,17 @@
 module.exports = {
-  darkMode: 'class',
+  darkMode: 'media',
   content: [
     "./*.html",  // Mencakup semua file .html di direktori root
     "./*.js"     // Mencakup semua file .js di direktori root
   ],
   theme: {
-    extend: {},
+    extend: {
+      textStroke: {
+        // Menambahkan utilitas kustom untuk stroke text
+        '2px': '2px black',
+      },
+
+    },
   },
   variants: {
     extend: {},

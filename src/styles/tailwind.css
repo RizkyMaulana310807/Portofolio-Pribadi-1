@@ -2,3 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+.stroktext {
+    color: transparent; /* Pastikan teks transparan agar stroke terlihat */
+    -webkit-text-stroke: 2px var(--stroke-color, black); /* Gunakan variabel CSS */
+}
+.wstrktxt {
+    color: transparent;
+    -webkit-text-stroke: 2px white;
+}
