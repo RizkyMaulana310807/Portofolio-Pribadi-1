@@ -2,154 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slide In On Scroll</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> -->
-    <link rel="stylesheet" href="node_modules/aos/dist/aos.css" />
-    <style>
-        body {
-            font-family: 'Alata', sans-serif;
-            font-weight: 400;
-        }
-    </style>
+    <title>Document</title>
 </head>
-<body class="bg-gray-100">
-    <div class="container mx-auto my-10 text-center">
-        <h1 class="text-5xl font-bold text-gray-800">Animate Content on Scroll</h1>
+<body>
+    <div id="app">
+        <kartu title="Hello from HTML!">
+            <!-- <p>This content is from the HTML file.</p> -->
+        </kartu>
     </div>
-
-    <div class="container mx-auto my-10 bg-white shadow-md rounded-lg p-5">
-        <p class="text-gray-700 mb-5">A fat belly is linked to various diseases...</p>
-    </div>
-
-    <div class="container mx-auto my-5">
-        <div class="card bg-white shadow-lg rounded-lg mb-5" data-aos="fade-up">
-            <div class="card-header bg-blue-500 text-white p-3 rounded-t-lg">Day-1</div>
-            <div class="card-body p-5">
-                <h5 class="text-xl font-semibold">Reduce refined carbs</h5>
-                <p class="text-gray-700">One should avoid consuming refined carbs...</p>
-                <a href="#" class="mt-3 inline-block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Go somewhere</a>
-            </div>
-        </div>
-
-        <!-- Tambahkan elemen lain di sini dengan data-aos -->
-
-        <div class="card bg-white shadow-lg rounded-lg mb-5" data-aos="fade-up">
-            <div class="card-header bg-green-500 text-white p-3 rounded-t-lg">Day-2</div>
-            <div class="card-body p-5">
-                <h5 class="text-xl font-semibold">Circuit training</h5>
-                <p class="text-gray-700">If you want to build muscle...</p>
-                <a href="#" class="mt-3 inline-block bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">Go somewhere</a>
-            </div>
-        </div>
-
-        <div class="card bg-white shadow-lg rounded-lg mb-5" data-aos="fade-up">
-            <div class="card-header bg-green-500 text-white p-3 rounded-t-lg">Day-2</div>
-            <div class="card-body p-5">
-                <h5 class="text-xl font-semibold">Circuit training</h5>
-                <p class="text-gray-700">If you want to build muscle...</p>
-                <a href="#" class="mt-3 inline-block bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">Go somewhere</a>
-            </div>
-        </div>
-
-        <div class="card bg-white shadow-lg rounded-lg mb-5" data-aos="fade-up">
-            <div class="card-header bg-green-500 text-white p-3 rounded-t-lg">Day-2</div>
-            <div class="card-body p-5">
-                <h5 class="text-xl font-semibold">Circuit training</h5>
-                <p class="text-gray-700">If you want to build muscle...</p>
-                <a href="#" class="mt-3 inline-block bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">Go somewhere</a>
-            </div>
-        </div>
-
-        <div class="card bg-white shadow-lg rounded-lg mb-5" data-aos="fade-up">
-            <div class="card-header bg-green-500 text-white p-3 rounded-t-lg">Day-2</div>
-            <div class="card-body p-5">
-                <h5 class="text-xl font-semibold">Circuit training</h5>
-                <p class="text-gray-700">If you want to build muscle...</p>
-                <a href="#" class="mt-3 inline-block bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">Go somewhere</a>
-            </div>
-        </div>
-
-        <div class="card bg-white shadow-lg rounded-lg mb-5" data-aos="fade-up">
-            <div class="card-header bg-green-500 text-white p-3 rounded-t-lg">Day-2</div>
-            <div class="card-body p-5">
-                <h5 class="text-xl font-semibold">Circuit training</h5>
-                <p class="text-gray-700">If you want to build muscle...</p>
-                <a href="#" class="mt-3 inline-block bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">Go somewhere</a>
-            </div>
-        </div>
-
-        <div class="card bg-white shadow-lg rounded-lg mb-5" data-aos="fade-up">
-            <div class="card-header bg-green-500 text-white p-3 rounded-t-lg">Day-2</div>
-            <div class="card-body p-5">
-                <h5 class="text-xl font-semibold">Circuit training</h5>
-                <p class="text-gray-700">If you want to build muscle...</p>
-                <a href="#" class="mt-3 inline-block bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">Go somewhere</a>
-            </div>
-        </div>
-
-        <div class="card bg-white shadow-lg rounded-lg mb-5" data-aos="fade-up">
-            <div class="card-header bg-green-500 text-white p-3 rounded-t-lg">Day-2</div>
-            <div class="card-body p-5">
-                <h5 class="text-xl font-semibold">Circuit training</h5>
-                <p class="text-gray-700">If you want to build muscle...</p>
-                <a href="#" class="mt-3 inline-block bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">Go somewhere</a>
-            </div>
-        </div>
-
-        <div class="card bg-white shadow-lg rounded-lg mb-5" data-aos="fade-up">
-            <div class="card-header bg-green-500 text-white p-3 rounded-t-lg">Day-2</div>
-            <div class="card-body p-5">
-                <h5 class="text-xl font-semibold">Circuit training</h5>
-                <p class="text-gray-700">If you want to build muscle...</p>
-                <a href="#" class="mt-3 inline-block bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">Go somewhere</a>
-            </div>
-        </div>
-
-        <div class="card bg-white shadow-lg rounded-lg mb-5" data-aos="fade-up">
-            <div class="card-header bg-green-500 text-white p-3 rounded-t-lg">Day-2</div>
-            <div class="card-body p-5">
-                <h5 class="text-xl font-semibold">Circuit training</h5>
-                <p class="text-gray-700">If you want to build muscle...</p>
-                <a href="#" class="mt-3 inline-block bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">Go somewhere</a>
-            </div>
-        </div>
-
-        <div class="card bg-white shadow-lg rounded-lg mb-5" data-aos="fade-up">
-            <div class="card-header bg-green-500 text-white p-3 rounded-t-lg">Day-2</div>
-            <div class="card-body p-5">
-                <h5 class="text-xl font-semibold">Circuit training</h5>
-                <p class="text-gray-700">If you want to build muscle...</p>
-                <a href="#" class="mt-3 inline-block bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">Go somewhere</a>
-            </div>
-        </div>
-
-        <div class="card bg-white shadow-lg rounded-lg mb-5" data-aos="fade-up">
-            <div class="card-header bg-green-500 text-white p-3 rounded-t-lg">Day-2</div>
-            <div class="card-body p-5">
-                <h5 class="text-xl font-semibold">Circuit training</h5>
-                <p class="text-gray-700">If you want to build muscle...</p>
-                <a href="#" class="mt-3 inline-block bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">Go somewhere</a>
-            </div>
-        </div>
-        <!-- Ulangi untuk elemen lain -->
-
-    </div>
-
-    <div class="container mx-auto my-10 bg-white shadow-md rounded-lg p-5">
-        <p class="text-gray-700">Start with coming on all fours...</p>
-    </div>
-
-    <!-- <script src="https://unpkg.com/aos@next/dist/aos.js"></script> -->
-    <script src="node_modules/aos/dist/aos.js"></script>
+    
+    
+    <script src="src/component/card.js"></script> <!-- Pastikan ini mengarah ke file JavaScript komponen Anda -->
     <script>
-        AOS.init({
-            offset: 200,  // jarak sebelum animasi dimulai
-            duration: 1000, // durasi animasi dalam milidetik
-            easing: 'ease-in-out', // jenis easing
+        new Vue({
+            el: '#app',
+            components: {
+                'kartu': card
+            }
         });
     </script>
 </body>
