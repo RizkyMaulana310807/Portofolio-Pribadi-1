@@ -90,9 +90,9 @@
         
 
         <div class="flex h-screen bg-white">
-            <div class="bg-red-500 w-1/2 flex items-center justify-center">
+            <div class="bg-black w-1/2 flex items-center justify-center">
                 <div class="overflow-hidden w-1/2 h-1/2 rounded-lg" data-aos="fade-up" data-aos-delay="150">
-                    <img src="src/images/project/anonym.png" alt="anonym" class="w-full h-full object-cover transition-transform duration-250 ease-in-out hover:scale-110">
+                    <img src="src/images/icon/gura.jpeg" alt="anonym" class="w-full h-full object-cover transition-transform duration-250 ease-in-out hover:scale-110">
                 </div>                               
             </div>
             <div class="bg-black w-1/2 p-6 flex justify-center flex-col">
@@ -130,11 +130,11 @@
             </div>
         </div>
 
-        <div class="bg-blue-500 flex flex-col h-screen">
+        <div class="bg-white flex flex-col h-screen">
             <div class=" flex">
                 <h1 class="text-white font-bold text-6xl">Recent Project : </h1>
             </div>
-            <div class="flex h-[75%] w-screen bg-green-500 items-center m-auto justify-center">
+            <div class="flex h-[75%] w-screen bg-slate-200 items-center m-auto justify-center">
                 <!-- card1 -->
                 <div class="bg-white h-[75%] w-72 rounded-xl border-2 border-transparent transform hover:scale-110 transition-all hover:border-black group">
                     <div class="p-4">
@@ -153,13 +153,70 @@
             </div>
         </div>
 
-        <div class="bg-yellow-500 flex h-screen">
-            <div>
-                <h1>Experience : </h1>
+        <div class="bg-black flex flex-col h-screen p-4">
+            <div class="">
+                <h1 class="text-white text-4xl font-extrabold text-center">Get In Touch </h1>
+            </div>
+            <div class="bg-black h-full w-full flex flex-rows">
+                <div class="bg-black w-1/2 flex items-center justify-center">
+                    <div class="flex w-1/2 bg-white rounded-2xl flex-col p-4 gap-4">
+                        <div class="flex flex-row">
+                            <h1 class="text-black font-bold text-4xl">info</h1>
+                            <div class="">
+                                <i class="fa-solid fa-info border-2 border-black px-1.5 py-0.5 rounded-full text-sm"></i>
+                            </div>
+                            
+                        </div>
+                        <div class="flex flex-col gap-4">
+                            <label for="#"><i class="fa-solid fa-envelope"></i> Email</label>
+                            <label for="#"><i class="fa-solid fa-phone"></i> Phone</label>
+                            <label for="#"><i class="fa-solid fa-address-book"></i> Street</label>
+                            <label for="#">Others</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-black w-1/2 h-screen flex items-center justify-center">
+                    <!-- header -->
+                    <div class="bg-white flex flex-col gap-4 h-[65%] w-[85%] p-4 rounded-xl">
+                        <h1 class="text-black text-2xl font-bold">Contact Me</h1>
+                        <form class="flex flex-col gap-4 bg-white p-4 rounded-lg m-auto" method="POST">
+                            <div class="flex justify-between">
+                                <div class="relative border-2 border-black w-full rounded-lg">
+                                    <input type="text" name="input1" id="input1" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-red-500 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                                    <label for="input1" class="absolute text-sm text-gray-500 dark:text-black duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">Nama</label>
+                                </div>
+                                <div class="relative border-2 border-black w-full rounded-lg">
+                                    <input type="text" name="input2" id="input2" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-red-500 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                                    <label for="input2" class="absolute text-sm text-gray-500 dark:text-black duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">Email</label>
+                                </div>
+                            </div>
+                            <div class="relative border-2 border-black w-full rounded-lg">
+                                <input type="text" name="input3" id="input3" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-red-500 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                                <label for="input3" class="absolute text-sm text-gray-500 dark:text-black duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">Pesan</label>
+                            </div>
+                            <div class="bg-white flex justify-center p-3 rounded-lg border-2 border-black hover:bg-black transition-all group">
+                                <button type="submit" class="text-black group-hover:text-white font-semibold transition duration-200 px-4 py-2 rounded">Kirim</button>
+                            </div>
+                        </form>
+                        <?php if ($messageSent): ?>
+    <p>Email berhasil dikirim!</p>
+<?php elseif ($errorMessage): ?>
+    <p style="color: red;"><?= $errorMessage; ?></p>
+<?php endif; ?>
+                    </div>
+                    
+                </div>
+                
             </div>
         </div>
         
     </main>
+
+    <!-- <footer class="bg-black p-4 flex flex-rows justify-between">
+        <p class="text-white">&copy; Rizky Maulana. All right reserved</p>
+        <a href="#" class="text-white">Back to top</a>
+    </footer> -->
+    
 
     <script src="node_modules/aos/dist/aos.js"></script>
     <script>
