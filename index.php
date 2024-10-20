@@ -1,5 +1,36 @@
+<?php
+session_start(); // Memulai sesi
+
+$messageSent = false; // Untuk menandai status pengiriman email
+$errorMessage = ""; // Untuk menyimpan pesan kesalahan
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = htmlspecialchars($_POST['input1']);
+    $email = htmlspecialchars($_POST['input2']);
+    $message = htmlspecialchars($_POST['input3']);
+    $subject = "Pesan dari: $name"; // Mengatur subjek email
+
+    $recipient = "rizkymaulana.bussinese@gmail.com"; // Alamat email penerima
+    $body = "Dari: $name\nEmail: $email\n\nPesan:\n$message"; // Konten email
+
+    // Membuat URL untuk Gmail
+    $gmailUrl = "https://mail.google.com/mail/?view=cm&fs=1&to={$recipient}&su=" . urlencode($subject) . "&body=" . urlencode($body);
+
+    // Redirect ke URL Gmail
+    header("Location: $gmailUrl");
+    exit();
+}
+
+// Jika ada pesan di sesi, ambil dan hapus dari sesi
+if (isset($_SESSION['message'])) {
+    $messageSent = $_SESSION['message']['sent'];
+    $errorMessage = $_SESSION['message']['error'];
+    unset($_SESSION['message']); // Hapus pesan dari sesi setelah diambil
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +38,8 @@
     <link rel="stylesheet" href="./dist/output.css">
     <link rel="stylesheet" href="font/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="node_modules/aos/dist/aos.css" />
-    <style>
-    </style>
 </head>
+
 <body class="flex flex-col">
     <header class="block bg-white top-0 inset-x-0 z-50 border-0.5 border-black shadow-lg">
         <nav class="flex items-center justify-between p-4 lg:px-8" aria-label="Global">
@@ -26,11 +56,11 @@
                 <a href="#" class="text-sm font-semibold border-2 border-white bg-black leading-6 text-white dark:text-gray-200 p-1.5 px-3 rounded-lg hover:underline hover:bg-white hover:text-black hover:border-black transition-all text-center">Project <span aria-hidden="true">&rarr;</span></a>
                 <!-- <a href="#" class="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400">Home</a> -->
                 <!-- <a href="#" class="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400">Project</a> -->
-                    <!-- <button title="Dark / Light Mode" onclick="toggleDarkMode()" type="button" class="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200 bg-gray-200 dark:bg-gray-800 p-2 rounded-md">
+                <!-- <button title="Dark / Light Mode" onclick="toggleDarkMode()" type="button" class="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200 bg-gray-200 dark:bg-gray-800 p-2 rounded-md">
                         Dark Mode
                     </button> -->
             </div>
-            
+
             <div id="buttonMenu" class="flex lg:hidden">
                 <!-- Hapus atribut onclick="toggleMenu()" -->
                 <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 dark:text-gray-300" aria-label="Open main menu">
@@ -87,13 +117,13 @@
                 <a href="#" class="text-sm md:text-base lg:text-2xl py-2 px-4 border-2 border-transparent rounded-lg text-white bg-black hover:bg-transparent hover:text-black hover:border-black transition duration-300" data-aos="fade-up">You Need A GAME Dev</a>
             </div>
         </div>
-        
+
 
         <div class="flex h-screen bg-white">
             <div class="bg-black w-1/2 flex items-center justify-center">
                 <div class="overflow-hidden w-1/2 h-1/2 rounded-lg" data-aos="fade-up" data-aos-delay="150">
                     <img src="src/images/icon/gura.jpeg" alt="anonym" class="w-full h-full object-cover transition-transform duration-250 ease-in-out hover:scale-110">
-                </div>                               
+                </div>
             </div>
             <div class="bg-black w-1/2 p-6 flex justify-center flex-col">
                 <div class="relative mb-20"> <!-- Tambahkan margin bawah untuk jarak -->
@@ -146,7 +176,7 @@
                             <p class="font-thin">Descripsi Project</p>
                         </div>
                         <div class="group">
-                        <a href="#" class="bg-white text-black border-2 border-black px-7 py-2 rounded-full transform hover:scale-110 inline-flex hover:bg-black hover:text-white transition-all">Try it</a>
+                            <a href="#" class="bg-white text-black border-2 border-black px-7 py-2 rounded-full transform hover:scale-110 inline-flex hover:bg-black hover:text-white transition-all">Try it</a>
                         </div>
                     </div>
                 </div>
@@ -165,7 +195,7 @@
                             <div class="">
                                 <i class="fa-solid fa-info border-2 border-black px-1.5 py-0.5 rounded-full text-sm"></i>
                             </div>
-                            
+
                         </div>
                         <div class="flex flex-col gap-4">
                             <label for="#"><i class="fa-solid fa-envelope"></i> Email</label>
@@ -179,7 +209,7 @@
                     <!-- header -->
                     <div class="bg-white flex flex-col gap-4 h-[65%] w-[85%] p-4 rounded-xl">
                         <h1 class="text-black text-2xl font-bold">Contact Me</h1>
-                        <form class="flex flex-col gap-4 bg-white p-4 rounded-lg m-auto" method="POST">
+                        <form class="flex flex-col gap-4 bg-white p-4 rounded-lg m-auto" onsubmit="openGmail(event)">
                             <div class="flex justify-between">
                                 <div class="relative border-2 border-black w-full rounded-lg">
                                     <input type="text" name="input1" id="input1" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-red-500 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
@@ -187,7 +217,7 @@
                                 </div>
                                 <div class="relative border-2 border-black w-full rounded-lg">
                                     <input type="text" name="input2" id="input2" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-red-500 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                                    <label for="input2" class="absolute text-sm text-gray-500 dark:text-black duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">Email</label>
+                                    <label for="input2" class="absolute text-sm text-gray-500 dark:text-black duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">Subject</label>
                                 </div>
                             </div>
                             <div class="relative border-2 border-black w-full rounded-lg">
@@ -199,54 +229,71 @@
                             </div>
                         </form>
                         <?php if ($messageSent): ?>
-    <p>Email berhasil dikirim!</p>
-<?php elseif ($errorMessage): ?>
-    <p style="color: red;"><?= $errorMessage; ?></p>
-<?php endif; ?>
+                            <p>Email berhasil dikirim!</p>
+                        <?php elseif ($errorMessage): ?>
+                            <p style="color: red;"><?= $errorMessage; ?></p>
+                        <?php endif; ?>
                     </div>
-                    
+
                 </div>
-                
+
             </div>
         </div>
-        
+
     </main>
 
     <!-- <footer class="bg-black p-4 flex flex-rows justify-between">
         <p class="text-white">&copy; Rizky Maulana. All right reserved</p>
         <a href="#" class="text-white">Back to top</a>
     </footer> -->
-    
+
 
     <script src="node_modules/aos/dist/aos.js"></script>
     <script>
+        function openGmail(event) {
+            event.preventDefault(); // Mencegah pengiriman form tradisional
+
+            // Ambil nilai dari input
+            var name = document.getElementById('input1').value;
+            var subject = document.getElementById('input2').value;
+            var message = document.getElementById('input3').value;
+
+            // Buat URL untuk Gmail
+            var recipient = "rizkymaulana.bussinese@gmail.com"; // Alamat email penerima
+            var gmailUrl = "https://mail.google.com/mail/?view=cm&fs=1&to=" + encodeURIComponent(recipient) + "&su=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent("Dari: " + name + "\n\nPesan:\n" + message);
+
+            // Buka Gmail di tab baru
+            window.open(gmailUrl, '_blank');
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             // Select the header
             const header = document.querySelector('header');
             const mobileMenu = document.getElementById('mobile-menu');
             const openMenuButton = document.querySelector('#buttonMenu button');
             const closeMenuButton = mobileMenu.querySelector('button');
-    
+
             // Event listener for opening menu
             openMenuButton.addEventListener('click', () => {
                 console.log("Menu dibuka");
                 mobileMenu.classList.remove('hidden');
             });
-    
+
             // Event listener for closing menu
             closeMenuButton.addEventListener('click', () => {
                 console.log("Menu ditutup");
                 mobileMenu.classList.add('hidden');
             });
-                
+
         });
-    
+
         AOS.init({
             offset: 200,
             duration: 1000,
             easing: 'ease-in-out',
         });
     </script>
-    
+
 </body>
+
 </html>
